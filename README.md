@@ -65,3 +65,31 @@ $ npm run build:api:dev
 $ npm run build:transfer:dev
 $ npm run build:notification:dev
 ```
+
+#### 디비 마이그레이션
+
+* 디비 마이그레이션 비교 후 생성
+
+```bash
+$ npm run migration:generate
+```
+
+* 마이그레이션 실행
+
+```bash
+$ npm run migration:run
+```
+
+* 마이그레이션 롤백
+
+```bash
+$ npm run migration:revert
+```
+
+* 빈 마이그레이션 생성
+
+```bash
+$ typeorm-ts-node-esm migration:create libs/database/src/migrations/{마이그레이션 이름}
+```
+
+`libs/database/src/migrations/` 아래에 `{타임스탬프}-{마이그레이션 이름}.ts` 형태로 마이그레이션 파일 생성됨
