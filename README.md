@@ -27,11 +27,11 @@
 
 ```
 # 데이터베이스 정보
-HOST=127.0.0.1
-PORT=3306
-USERNAME=root
-PASSWORD=password
-DATABASE=my_service
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_USERNAME=root
+DB_PASSWORD=password
+DB_DATABASE=my_service
 ```
 
 * api서버

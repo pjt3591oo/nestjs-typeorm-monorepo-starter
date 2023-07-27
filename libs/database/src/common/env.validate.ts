@@ -6,28 +6,28 @@ export enum Environment {
 }
 
 export enum EnvKey {
-  HOST = 'HOST',
-  PORT = 'PORT',
-  USERNAME = 'USERNAME',
-  PASSWORD = 'PASSWORD',
-  DATABASE = 'DATABASE',
+  DB_HOST = 'DB_HOST',
+  DB_PORT = 'DB_PORT',
+  DB_USERNAME = 'DB_USERNAME',
+  DB_PASSWORD = 'DB_PASSWORD',
+  DB_DATABASE = 'DB_DATABASE',
 }
 
 class EnvironmentVariables {
   @IsString()
-  HOST: string;
+  DB_HOST: string;
 
   @IsNumber()
-  PORT: number;
+  DB_PORT: number;
 
   @IsString()
-  USERNAME: string;
+  DB_USERNAME: string;
 
   @IsString()
-  PASSWORD: string;
+  DB_PASSWORD: string;
 
   @IsString()
-  DATABASE: string;
+  DB_DATABASE: string;
 }
 
 export function validate(config: Record<string, unknown>) {
