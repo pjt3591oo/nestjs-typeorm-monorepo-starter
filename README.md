@@ -10,9 +10,9 @@
 
 * database
 * config
-  - filter
-  - interceptor
-  - etcs
+  - filter: 미구현
+  - interceptor: 미구현
+  - etcs: 미구현
 
 
 #### 디비 셋업
