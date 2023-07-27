@@ -13,7 +13,7 @@ import * as path from 'path';
       validate,
       envFilePath: [
         path.resolve(__dirname, '../../../.env.notification'),
-        path.resolve(__dirname, '../../../.env.base'),
+        path.resolve(__dirname, '../../../.env'),
       ],
     }),
     DatabaseModule,

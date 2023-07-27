@@ -15,7 +15,7 @@ import { validate } from './common/env.validate';
       validate,
       envFilePath: [
         path.resolve(__dirname, '../../../.env.api'),
-        path.resolve(__dirname, '../../../.env.base'),
+        path.resolve(__dirname, '../../../.env'),
       ],
     }),
     DatabaseModule,

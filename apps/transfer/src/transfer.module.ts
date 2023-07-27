@@ -13,7 +13,7 @@ import { DatabaseModule } from '@app/database';
       validate,
       envFilePath: [
         path.resolve(__dirname, '../../../.env.transfer'),
-        path.resolve(__dirname, '../../../.env.base'),
+        path.resolve(__dirname, '../../../.env'),
       ],
     }),
     DatabaseModule,
