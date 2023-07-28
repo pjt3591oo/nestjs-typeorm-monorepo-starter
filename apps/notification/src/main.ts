@@ -10,6 +10,8 @@ async function bootstrap() {
   const configService = app.get(ConfigService);
   const port = configService.get(EnvKey.SERVER_PORT);
 
+  app.setGlobalPrefix('notification'); // 전역 Prefix 설정
+
   app.useGlobalInterceptors(new Interceptor());
   app.useGlobalFilters(new MyServiceExceptionFilter());
 
