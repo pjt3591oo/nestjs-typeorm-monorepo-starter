@@ -99,3 +99,15 @@ $ typeorm-ts-node-esm migration:create libs/database/src/migrations/{마이그�
 ```
 $ docker-compose up
 ```
+
+`http://localhost:8080/api`
+
+`http://localhost:8080/transfer`
+
+`http://localhost:8080/notification`
+
+* scale
+
+```
+$ docker-compose up --scale api=2
+```
