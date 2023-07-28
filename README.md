@@ -93,3 +93,9 @@ $ typeorm-ts-node-esm migration:create libs/database/src/migrations/{마이그�
 ```
 
 `libs/database/src/migrations/` 아래에 `{타임스탬프}-{마이그레이션 이름}.ts` 형태로 마이그레이션 파일 생성됨
+
+#### 도커배포
+
+```
+$ docker-compose up
+```
