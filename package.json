@@ -21,9 +21,9 @@
     "start:api:dev": "nest start api --watch",
     "start:transfer:dev": "nest start transfer --watch",
     "start:notification:dev": "nest start notification --watch",
-    "build:api:dev": "nest build api --watch",
-    "build:transfer:dev": "nest build transfer --watch",
-    "build:notification:dev": "nest build notification --watch",
+    "build:api:dev": "nest build api",
+    "build:transfer:dev": "nest build transfer",
+    "build:notification:dev": "nest build notification",
     "migration:generate": "typeorm-ts-node-esm -d libs/database/for-migration-typeorm.config.ts migration:generate libs/database/src/migrations/changeup",
     "migration:run": "typeorm-ts-node-esm -d libs/database/for-migration-typeorm.config.ts migration:run",
     "migration:revert": "typeorm-ts-node-esm -d libs/database/for-migration-typeorm.config.ts migration:revert"

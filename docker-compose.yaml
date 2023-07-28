@@ -1,0 +1,68 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:8.0.34
+    container_name: mysql.service.com
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: my_service
+    ports:
+      - "3306:3306"
+
+  api:
+    build: 
+      context: .
+      dockerfile: dockerfile.api
+    # image: myservice-api:1.0
+    container_name: myservice.api.com
+    environment:
+      DB_HOST: mysql.service.com
+      DB_USERNAME: root
+      DB_PORT: 3306
+      DB_PASSWORD: password
+      DB_DATABASE: my_service
+      SERVER_PORT: 3000
+    ports:
+      - "3001:3000"
+    depends_on:
+      - mysql
+    restart: always
+
+  transfer:
+    build: 
+      context: .
+      dockerfile: dockerfile.transfer
+    # image: myservice-transfer:1.0
+    container_name: myservice.transfer.com
+    environment:
+      DB_HOST: mysql.service.com
+      DB_USERNAME: root
+      DB_PORT: 3306
+      DB_PASSWORD: password
+      DB_DATABASE: my_service
+      SERVER_PORT: 3000
+    ports:
+      - "4001:3000"
+    depends_on:
+      - mysql
+    restart: always
+
+  notification:
+    build: 
+      context: .
+      dockerfile: dockerfile.notification
+    # image: myservice-notification:1.0
+    container_name: myservice.notification.com
+    environment:
+      DB_HOST: mysql.service.com
+      DB_USERNAME: root
+      DB_PORT: 3306
+      DB_PASSWORD: password
+      DB_DATABASE: my_service
+      SERVER_PORT: 3000
+    ports:
+      - "5001:3000"
+    depends_on:
+      - mysql
+    restart: always

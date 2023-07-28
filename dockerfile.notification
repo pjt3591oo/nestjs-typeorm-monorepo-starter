@@ -1,0 +1,11 @@
+FROM node:20-alpine
+
+RUN mkdir -p /var/app
+WORKDIR /var/app
+COPY . .
+
+RUN npm install
+RUN npm run build:notification:dev
+
+EXPOSE 3000
+CMD [ "node", "dist/apps/notification/main.js" ]
