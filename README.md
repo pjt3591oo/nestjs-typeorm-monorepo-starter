@@ -10,8 +10,8 @@
 
 * database
 * config
-  - filter: 미구현
-  - interceptor: 미구현
+  - filter
+  - interceptor
   - etcs: 미구현
 
 
