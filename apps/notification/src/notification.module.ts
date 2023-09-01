@@ -2,9 +2,9 @@ import { Module } from '@nestjs/common';
 import { NotificationController } from './notification.controller';
 import { NotificationService } from './notification.service';
 import { ConfigModule } from '@nestjs/config';
-import { validate } from 'class-validator';
-import { DatabaseModule } from '@app/database';
+import { validate } from './common/env.validate';
 import * as path from 'path';
+import { DatabaseModule } from '@app/database';
 
 @Module({
   imports: [
