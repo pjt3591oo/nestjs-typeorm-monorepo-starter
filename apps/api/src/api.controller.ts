@@ -10,4 +10,9 @@ export class ApiController {
   getHello(): Promise<User[]> {
     return this.apiService.getHello();
   }
+
+  @Get()
+  health() {
+    return 'pong';
+  }
 }

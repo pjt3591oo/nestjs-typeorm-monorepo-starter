@@ -1,0 +1,34 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nest-typeorm-monorepo-alb-ingress
+  annotations:
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 8080}]'
+  labels:
+    app: nest-typeorm-monorepo-alb-ingress
+spec:
+  ingressClassName: alb
+  rules:
+    - http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: api-svc
+                port:
+                  number: 8080
+          - path: /transfer
+            pathType: Prefix
+            backend:
+              service:
+                name: transfer-svc
+                port:
+                  number: 8080
+          - path: /notification
+            pathType: Prefix
+            backend:
+              service:
+                name: notification-svc
+                port:
+                  number: 8080

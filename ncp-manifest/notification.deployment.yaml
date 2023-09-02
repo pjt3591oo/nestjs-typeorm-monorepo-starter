@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification-deployment   # deployment의 이름
+  labels:
+    app: notification-deployment  # deployment의 라벨
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: notification # replicaset이 관리할 pod 라벨
+  template:    # 하위에 pod 정보 설정
+    metadata:
+      labels:
+        app: notification # pod의 라벨
+    spec: # 컨테이너 설정
+      containers:
+      - name: notification
+        image: nestjs-typeorm-monorepo.kr.ncr.ntruss.com/notification:latest
+        ports:
+        - containerPort: 8080
+        env:
+          - name: SERVER_PORT
+            value: "8080"
+          - name: DB_HOST
+            valueFrom:
+              secretKeyRef:
+                name: nestjs-typeorm-db-env
+                key: DB_HOST
+          - name: DB_PORT
+            valueFrom:
+              secretKeyRef:
+                name: nestjs-typeorm-db-env
+                key: DB_PORT
+          - name: DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: nestjs-typeorm-db-env
+                key: DB_USERNAME
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: nestjs-typeorm-db-env
+                key: DB_PASSWORD
+          - name: DB_DATABASE
+            valueFrom:
+              secretKeyRef:
+                name: nestjs-typeorm-db-env
+                key: DB_DATABASE
+      imagePullSecrets:
+      - name: nestjs-typeorm-monorepo-regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: notification-svc
+spec:
+  type: NodePort # ClusterIP, LoadBalancer, NodePort
+  selector:
+    app: notification # 서비스가 부하분산해줄 파드이름
+  ports:
+    - name: http
+      # nodePort: 31000
+      port: 8080
+      protocol: TCP
+      targetPort: 8080  # pod에 실행중인 어플리케이션의 포트(노드 어플리케이션이 8080번 포트로 running중)
+    - name: https
+      # nodePort: 31001
+      port: 443
+      protocol: TCP
+      targetPort: 8080 # pod에 실행중인 어플리케이션의 포트(노드 어플리케이션이 8080번 포트로 running중)
