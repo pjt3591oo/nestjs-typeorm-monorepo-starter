@@ -270,13 +270,13 @@ spec.rules.http.path에 따라 spec.rules.http.paths.backend.service로 부하�
 * apply(배포)
 
 ```bash
-$ kubectl apply -f ./manifest/api.deployment.yaml  --kubeconfig --kubeconfig=$KUBE_CONFIG
+$ kubectl apply -f ./ncp-manifest/api.deployment.yaml  --kubeconfig --kubeconfig=$KUBE_CONFIG
 
-$ kubectl apply -f ./manifest/transfer.deployment.yaml  --kubeconfig --kubeconfig=$KUBE_CONFIG
+$ kubectl apply -f ./ncp-manifest/transfer.deployment.yaml  --kubeconfig --kubeconfig=$KUBE_CONFIG
 
-$ kubectl apply -f ./manifest/notification.deployment.yaml  --kubeconfig --kubeconfig=$KUBE_CONFIG
+$ kubectl apply -f ./ncp-manifest/notification.deployment.yaml  --kubeconfig --kubeconfig=$KUBE_CONFIG
 
-$ kubectl apply -f ./manifest/ingress.yaml  --kubeconfig --kubeconfig=$KUBE_CONFIG
+$ kubectl apply -f ./ncp-manifest/ingress.yaml  --kubeconfig --kubeconfig=$KUBE_CONFIG
 ```
 
 ##### 컨테이너 접속
@@ -296,12 +296,11 @@ http://ing-default-nesttypeormmonorepoalbin-a6ef1-19348597-d2a3b835b499.kr.lb.na
 ##### 컨테이너 서비스 종료
 
 ```bash
-$ kubectl delete -f ./manifest/ingress.yaml  --kubeconfig ./kubeconfig.yaml
+$ kubectl delete -f ./ncp-manifest/ingress.yaml --kubeconfig=$KUBE_CONFIG
 
-$ kubectl delete -f ./manifest/api.deployment.yaml  --kubeconfig ./kubeconfig.yaml
+$ kubectl delete -f ./ncp-manifest/api.deployment.yaml --kubeconfig=$KUBE_CONFIG
 
-$ kubectl delete -f ./manifest/transfer.deployment.
-yaml  --kubeconfig ./kubeconfig.yaml
+$ kubectl delete -f ./ncp-manifest/transfer.deployment.yaml --kubeconfig=$KUBE_CONFIG
 
-$ kubectl delete -f ./manifest/notification.deployment.yaml  --kubeconfig ./kubeconfig.yaml
+$ kubectl delete -f ./ncp-manifest/notification.deployment.yaml --kubeconfig=$KUBE_CONFIG
 ```
